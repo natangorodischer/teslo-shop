@@ -1,14 +1,15 @@
-#Descripcion 
+# Descripción
 
-## correr en dev
+## Correr en desarrollo
 
-1. Clonar el repo 
-2.Instalar dependencias `Npm install`
-3. crear una copia de ``.env.template y renombrarlo a `` .env `` y cambiar variables de entorno 
-4. levantar bbdd ``` docker coompose up -d ```
-5. correr proyecto
+1. Clonar el repositorio.
+2. Instalar dependencias: `npm install`.
+3. Crear una copia de `.env.template`, renombrarla a `.env`, y ajustar las variables de entorno según sea necesario.
+4. Levantar la base de datos con Docker: ```docker compose up -d```.
+5. Correr las migraciones de Prisma: ```npx prisma migrate dev```.
+6. Ejecutar seed ``` npm run seed ```
+7. Correr el proyecto. `` Npm run dev `` 
 
+## Correr en producción
 
-## Correr en produccion 
-
-
+(Puedes agregar aquí las instrucciones específicas para correr en producción si tienes alguna)
