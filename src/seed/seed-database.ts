@@ -4,11 +4,11 @@ import prisma from '../lib/prisma';
 
 async function main() {
 
-    await Promise.all ([
-        prisma.productImage.deleteMany(),
-        prisma.product.deleteMany(),
-        prisma.category.deleteMany(), 
-    ]); 
+    // await Promise.all ([
+        await prisma.productImage.deleteMany();
+        await prisma.product.deleteMany();
+        await prisma.category.deleteMany();  
+    // ]); 
 
     const {categories, products} = initialData
         
@@ -44,10 +44,17 @@ async function main() {
 
     //imagenes
 
+    const imagesData = images.map(image => ({
+        url: image, 
+        productId: dbProduct.id
+    })); 
 
 
+    await prisma.productImage.createMany({
+        data: imagesData
+    });
 
-    })
+    }); 
 
     
     console.log('seed ejecutado')
