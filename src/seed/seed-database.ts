@@ -2,7 +2,6 @@ import { initialData } from "./seed";
 import prisma from '../lib/prisma'; 
 
 
-
 async function main() {
 
     await Promise.all ([
@@ -29,16 +28,26 @@ async function main() {
     }, {} as Record<string, string>)
     console.log(categoriesMap); 
         
-    //productos
 
-    // const {images, type,  ...product1} = products[0]
-    // await prisma.product.create({
-    //     data: {
-    //        ...product1,
-    //        categoryId: categoriesMap['shirts'] 
-    //     }
-    // })
+    //Todos los productos 
 
+    products.forEach ( async (product) => {
+
+    const {type, images, ...rest} = product;    
+
+    const dbProduct = await prisma.product.create({
+        data: {
+            ...rest, 
+            categoryId: categoriesMap[type]
+        }
+    })
+
+    //imagenes
+
+
+
+
+    })
 
     
     console.log('seed ejecutado')
